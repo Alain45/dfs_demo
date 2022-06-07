@@ -27,14 +27,18 @@ public class Robot {
         this.lawn = lawn;
     }
 
-     public void cut(){
+    public Lawn getLawn() {
+        return lawn;
+    }
+
+    public void cut(){
         int[][] newGrid = lawn.getGrid();
         newGrid[getCoordinate().getX()][getCoordinate().getY()] = 2;
         lawn.setGrid(newGrid);
     }
 
     Coordinate findNextMove(){
-        int directions[][] = {{-1,0}, {0,1}, {1,0}, {0,-1}}; // up, right, down, left
+        int[][] directions = {{-1,0}, {0,1}, {1,0}, {0,-1}}; // up, right, down, left
 
         for(int i=0; i<4; i++){
             int x = getCoordinate().getX()+directions[i][0];
