@@ -31,22 +31,22 @@ public class Main {
         Robot lawnMower = new Robot(startCoordinate);
         lawnMower.setLawn(lawn);
 
-        draw(lawnMower);
+
+        boolean end = false;
         lawnMower.cut();
-        boolean end;
-        do{
+        while(!end){
             end = true;
-            Coordinate newCoordinate = lawnMower.findNextMove();
-            if(newCoordinate != null){
+            draw(lawnMower);
+            Coordinate newCoordinate;
+            if((newCoordinate = lawnMower.findNextMove()) != null){
                 lawnMower.stepForward(newCoordinate);
                 lawnMower.cut();
                 end = false;
-            }else if(!lawnMower.getPath().empty()){
+            }else if(!lawnMower.getPath().isEmpty()){
                 lawnMower.stepBackward();
                 end = false;
             }
-            draw(lawnMower);
-        }while (!end);
+        }
 
     }
 }

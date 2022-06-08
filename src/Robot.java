@@ -44,6 +44,7 @@ public class Robot {
             int x = getCoordinate().getX()+directions[i][0];
             int y = getCoordinate().getY()+directions[i][1];
 
+            // new coordinate is inside the grid, not an obstacle and is an uncut cell
             if(x < lawn.getxSize() && x >= 0 && y < lawn.getySize() && y >= 0 && lawn.getGrid()[x][y] == 1){
                 return new Coordinate(x,y);
             }
